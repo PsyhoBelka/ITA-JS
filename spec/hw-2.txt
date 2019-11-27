@@ -1,0 +1,10 @@
+Реализовать функции-полифилы методов массивов
+fill
+pop
+push
+reverse
+shift
+unshift
+join
+slice
+splice
