@@ -6,21 +6,25 @@
         <title>Title Goes Here</title>
         <script>
             function lastIndexOfMan(source, find) {
-                if (arguments.length == 0) {
+                const args = [...arguments];
+                const argLength = args.length;
+                const findLength = find.length;
+
+                if (argLength === 0) {
                     return -1;
                 }
-                if (!arguments[1] || (typeof arguments[1]) != 'String') {
+                if (!args[1] || (typeof args[1]) !== 'string') {
                     return -1;
                 }
 
                 let startFrom = 0;
-                if (arguments.length == 3) {
-                    startFrom = arguments[2];
+                if (argLength === 3) {
+                    startFrom = args[2];
                 }
                 let k = 0;
                 let res = -1;
                 for (let i = source.length - 1; i >= startFrom; i--) {
-                    if (source[i] == find[k]) {
+                    if (source[i] === find[k]) {
                         k++;
                         res = k < 2 ? i : i - 1;
                         i += 2;
@@ -30,7 +34,7 @@
                         res = -1;
                     }
 
-                    if (k == find.length) {
+                    if (k === findLength) {
                         break;
                     }
                 }

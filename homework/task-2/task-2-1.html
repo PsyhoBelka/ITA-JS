@@ -1,28 +1,29 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang = "en">
+<html lang="en">
     <head>
-        <meta http-equiv = "content-type" content = "text/html; charset=utf-8">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <title>Title Goes Here</title>
-        <script type = "application/javascript">
+        <script type="application/javascript">
             function concatMan(source) {
-                let argLen=arguments.length;
-                if (argLen<=0){
+                let argLen = arguments.length;
+                if (argLen <= 0) {
                     return '';
                 }
                 if (argLen < 2) {
                     return source;
                 }
-                let res = '';
-                for (let i = 0; i < argLen; i++) {
-                    res += arguments[i];
-                }
-                return res;
+                // let res = '';
+                // for (let i = 0; i < argLen; i++) {
+                //     res += arguments[i];
+                // }
+
+                return [...arguments].join('');
             }
 
-            console.log(concatMan());
-            console.log(concatMan("123", "123"));
-            console.log(concatMan("123", "123", "456"));
-            console.log(concatMan("123", "123", "456", "-3453456"));
+            console.log(`concatMan() = ${concatMan()}`);
+            console.log(`concatMan("123", "123") = ${concatMan("123", "123")}}`);
+            console.log(`concatMan("123", "123", "456") = ${concatMan("123", "123", "456")}`);
+            console.log(`concatMan("123", "123", "456", "-3453456") = ${concatMan("123", "123", "456", "-3453456")}`);
         </script>
     </head>
 

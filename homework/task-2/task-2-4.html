@@ -1,15 +1,18 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang = "en">
+<html lang="en">
 
     <head>
-        <meta http-equiv = "content-type" content = "text/html; charset=utf-8">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <title>Title Goes Here</title>
-        <script>
+        <script type="application/javascript">
             function repeatMan(source, count) {
-                if (arguments.length < 2) {
+                const args = [...arguments];
+                const argsLength = args.length;
+
+                if (argsLength < 2) {
                     return '';
                 }
-                if (typeof count != 'number') {
+                if (typeof count !== 'number') {
                     return '';
                 }
                 count = Math.floor(count);
@@ -25,16 +28,16 @@
                 return res;
             }
 
-            console.log(repeatMan("12",4));
+            console.log(repeatMan("12", 4));
             console.log(repeatMan("12"));
-            console.log(repeatMan("12","333"));
-            console.log(repeatMan("12",3.2));
-            console.log(repeatMan("12",0.9));
-            console.log(repeatMan("12",0.3));
-            console.log(repeatMan("12",0.3));
-            console.log(repeatMan("12",0.7));
-            console.log(repeatMan("12",1.4));
-            console.log(repeatMan("12",1.7));
+            console.log(repeatMan("12", "333"));
+            console.log(repeatMan("12", 3.2));
+            console.log(repeatMan("12", 0.9));
+            console.log(repeatMan("12", 0.3));
+            console.log(repeatMan("12", 0.3));
+            console.log(repeatMan("12", 0.7));
+            console.log(repeatMan("12", 1.4));
+            console.log(repeatMan("12", 1.7));
             console.log(repeatMan("12"));
             console.log(repeatMan());
         </script>

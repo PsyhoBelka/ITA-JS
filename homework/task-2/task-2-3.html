@@ -1,33 +1,36 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang = "en">
+<html lang="en">
 
     <head>
-        <meta http-equiv = "content-type" content = "text/html; charset=utf-8">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <title>Title Goes Here</title>
         <script>
             function includesMan(source, find) {
-                if (arguments.length == 0) {
+                const args = [...arguments];
+                const argsLength = args.length;
+                const findLength = find ? find.length : '';
+
+                if (argsLength === 0) {
                     return false;
                 }
-                if (typeof arguments[1] != 'string') {
+                if (typeof args[1] !== 'string') {
                     return false;
                 }
 
                 let startFrom = 0;
-                if (arguments.length == 3) {
-                    startFrom = arguments[2];
+                if (argsLength === 3) {
+                    startFrom = args[2];
                 }
                 let res = false;
                 let k = 0;
                 for (let i = startFrom; i < source.length; i++) {
-                    if (source[i] == find[k]) {
+                    if (source[i] === find[k]) {
                         k++;
                     } else {
                         k = 0;
-                        k > 0 ? i-- : i;
                     }
 
-                    if (k == find.length) {
+                    if (k === findLength) {
                         res = true;
                         break;
                     }
@@ -36,9 +39,9 @@
                 return res;
             }
 
-            console.log(includesMan("12345678","2"));
-            console.log(includesMan("12345678","23"));
-            console.log(includesMan("12345678","24"));
+            console.log(includesMan("12345678", "2"));
+            console.log(includesMan("12345678", "23"));
+            console.log(includesMan("12345678", "24"));
             console.log(includesMan("12345678"));
             console.log(includesMan());
         </script>

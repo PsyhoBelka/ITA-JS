@@ -6,19 +6,22 @@
         <title>Title Goes Here</title>
         <script>
             function substringMan(source, indexA) {
-                if (arguments.length < 2) {
+                const args = [...arguments];
+                const argLength = args.length;
+
+                if (argLength < 2) {
                     return '';
                 }
                 let indexB;
-                if (arguments.length == 3) {
+                if (argLength === 3) {
                     indexB = arguments[2];
                 }
 
-                if (indexA == indexB) {
+                if (indexA === indexB) {
                     return '';
                 }
 
-                if (typeof indexB == 'undefined') {
+                if (typeof indexB === 'undefined') {
                     let res = '';
                     for (let i = indexA; i < source.length; i++) {
                         res += source[i];
@@ -50,8 +53,8 @@
                 return res;
             }
 
-            console.log(substrMan("12345", 1));
-            console.log(substrMan("12345", 3));
+            console.log(substringMan("12345", 1));
+            console.log(substringMan("12345", 3));
             console.log(substringMan("123456", 2, 5));
             console.log(substringMan("123456", 2, 2));
             console.log(substringMan("123456", -2, 2));
