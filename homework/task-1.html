@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            const matchStr = /([A|B])(\d+)([Y|R])/;
+
+            function parseLog(log) {
+               let teams = {
+                    A: {
+                        count: 11,
+                        yellow: [],
+                        red: []
+                    },
+                    B: {
+                        count: 11,
+                        yellow: [],
+                        red: []
+                    }
+                };
+                let shouldStop = false;
+                [...log].forEach((card) => {
+                    const card_arr = card.match(matchStr);
+                    const team = card_arr[1];
+                    const num = card_arr[2];
+                    const color = card_arr[3];
+
+                    if (!(teams[team].red.includes(num) || shouldStop)) {
+                        if (color === 'Y') {
+                            if (teams[team].yellow.includes(num)) {
+                                teams[team].red.push(num);
+                                teams[team].yellow.slice(teams[team].yellow.indexOf(num), 1);
+                            } else {
+                                teams[team].yellow.push(num);
+                            }
+                        } else {
+                            teams[team].red.push(num);
+                        }
+
+                        if (teams[team].red > 5) {
+                            shouldStop = true;
+                        }
+                    }
+                });
+
+                return [teams['A'].count-teams['A'].red.length, teams['B'].count - teams['B'].red.length];
+            }
+
+            console.log(parseLog(["A5R"]));
+            console.log(parseLog(["A5R", "B3Y"]));
+            console.log(parseLog(["A5R", "B3Y", "A5Y", "B3Y", "A5R"]));
+            console.log(parseLog(["A5R", "B3Y", "A5Y", "B3Y", "A5R"]));
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
