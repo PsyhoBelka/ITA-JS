@@ -1,36 +1,31 @@
-function checkEnvelops(env1, env2) {
+function fits(a, b, c, d) {
+    [a, b] = [Math.max(a, b), Math.min(a, b)]; //a big, b small
+    [c, d] = [Math.max(c, d), Math.min(c, d)]; //c big, d small
 
-    switch (typeof env1) {
-        case 'number':
-        case 'function':
-        case 'boolean':
-        case 'string':
-        case 'symbol':
-        case 'undefined':
-            return help;
+    for (let i = 0; i <= 90; i++) {
+        let tmpA = c * cos(i) + d * cos(90 - i);
+        let tmpB = c * cos(90 - i) + d * cos(i);
+        if (tmpA <= a && tmpB <= b) {
+            return 1;
+        }
     }
 
-    if (!(
-        env1.hasOwnProperty(a) ||
-        env1.hasOwnProperty(b) ||
-        env2.hasOwnProperty(c) ||
-        env2.hasOwnProperty(d)
-    )) {
-        return help;
+    return 0;
+}
+
+const cos = (x) => {
+    return Math.cos(x)
+};
+
+export function calc(a, b, c, d) {
+    if (fits(a, b, c, d) !== 0) {
+        return 1; //ab in cd
     }
-
-    if (
-        (env1.a < env2.c && env1.b < env2.d) ||
-        (env1.a < env2.d && env1.b < env2.c)
-    ) {
-
+    if (fits(c, d, a, b) !== 0) {
+        return 2; //cd in ab
     }
+    return 0; //nothing
 }
 
-function envSquare(a, b) {
-    return a * b;
-}
-
-function help() {
-
-}
+// console.log(fits(2, 2, 3, 4));
+// console.log(calc(4, 2, 3, 4));
