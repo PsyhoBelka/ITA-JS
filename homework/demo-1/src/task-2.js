@@ -1,6 +1,6 @@
 function fits(a, b, c, d) {
     [a, b] = [Math.max(a, b), Math.min(a, b)]; //a big, b small
-    [c, d] = [Math.max(c, d), Math.min(c, d)]; //c big, d small
+    [c, d] = [Math.max(c, d), Math.min(c, d)]; //sentences big, text small
 
     for (let i = 0; i <= 90; i++) {
         let tmpA = c * cos(i) + d * cos(90 - i);
